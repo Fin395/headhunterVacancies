@@ -12,5 +12,11 @@ class BaseApi(ABC):
         pass
 
     @abstractmethod
+    def connect_api(self, *args: Any, **kwargs: Any) -> None:
+        """Абстрактный метод подключения к API"""
+        pass
+
+    @abstractmethod
     def get_vacancies(self, *args: Any, **kwargs: Any) -> None:
         """Абстрактный метод для получения вакансий"""
+        pass
