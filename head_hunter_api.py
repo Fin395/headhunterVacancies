@@ -19,13 +19,27 @@ class HeadHunter(BaseApi):
         self.__vacancies = []
         super().__init__()
 
-    def __connect_api(self):
+    def _BaseApi__connect_api(self):
         """Метод подключения к API"""
         response = requests.get(self.__url, headers=self.__headers, params=self.__params)
-        if response.status_code != 200:
+        if response.status_code != 200: # проверяем статус кода-ответа
             raise requests.exceptions.RequestException
 
+    def get_vacancies(self, keyword):
+        """Метод получения данных """
+        self.__params['text'] = keyword
+        try:
+            self._BaseApi__connect_api()
+            while self.__params.get('page') != 20:
+                response = requests.get(self.__url, headers=self.__headers, params=self.__params)
+                vacancies = response.json()['items']
+                self.__vacancies.extend(vacancies)
+                self.__params['page'] += 1
+        except requests.exceptions.RequestException as e:
+            print(f"Не удалось получить данные. Возникла ошибка: {e}")
+        else:
+            return self.__vacancies
 
 
-# hh = HeadHunterAPI()
-# hh.connect_api()
+hh = HeadHunter()
+print(hh.get_vacancies("python"))
