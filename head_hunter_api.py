@@ -2,8 +2,8 @@ from src.base_api import BaseApi
 import requests
 
 
-class HeadHunterAPI(BaseApi):
-    """Создаем на основе базового класса BaseApi класс для работы с API"""
+class HeadHunter(BaseApi):
+    """Создаем на основе базового класса BaseApi класс для работы с HH"""
 
     __url: str
     __headers: dict
