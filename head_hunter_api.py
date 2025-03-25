@@ -15,7 +15,7 @@ class HeadHunter(BaseApi):
         """Метод инициализации экземпляра класса"""
         self.__url = 'https://api.hh.ru/vacancies'
         self.__headers = {'User-Agent': 'HH-User-Agent'}
-        self.__params = {'text': '', 'page': 0, 'per_page': 100}
+        self.__params = {'text': '', 'page': 0, 'per_page': 20}
         self.__vacancies = []
         super().__init__()
 
@@ -25,7 +25,7 @@ class HeadHunter(BaseApi):
         if response.status_code != 200: # проверяем статус кода-ответа
             raise requests.exceptions.RequestException
 
-    def get_vacancies(self, keyword):
+    def get_vacancies(self, keyword) -> list:
         """Метод получения данных """
         self.__params['text'] = keyword
         try:
@@ -37,9 +37,6 @@ class HeadHunter(BaseApi):
                 self.__params['page'] += 1
         except requests.exceptions.RequestException as e:
             print(f"Не удалось получить данные. Возникла ошибка: {e}")
+            return []
         else:
             return self.__vacancies
-
-
-hh = HeadHunter()
-print(hh.get_vacancies("python"))
