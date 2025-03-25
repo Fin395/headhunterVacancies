@@ -11,7 +11,7 @@ class HeadHunter(BaseApi):
     __vacancies: list
 
 
-    def __init__(self):
+    def __init__(self) -> None:
         """Метод инициализации экземпляра класса"""
         self.__url = 'https://api.hh.ru/vacancies'
         self.__headers = {'User-Agent': 'HH-User-Agent'}
@@ -19,14 +19,14 @@ class HeadHunter(BaseApi):
         self.__vacancies = []
         super().__init__()
 
-    def _BaseApi__connect_api(self):
-        """Метод подключения к API"""
+    def _BaseApi__connect_api(self) -> None:
+        """Метод для проверки подключения к API"""
         response = requests.get(self.__url, headers=self.__headers, params=self.__params)
         if response.status_code != 200: # проверяем статус кода-ответа
             raise requests.exceptions.RequestException
 
-    def get_vacancies(self, keyword) -> list:
-        """Метод получения данных """
+    def get_vacancies(self, keyword: str) -> list:
+        """Метод получения данных о вакансиях с сайта hh.ru """
         self.__params['text'] = keyword
         try:
             self._BaseApi__connect_api()
