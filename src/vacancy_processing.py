@@ -20,12 +20,12 @@ class Vacancy:
 
     def __le__(self, other: Any) -> bool:
         """Магический метод, позволяющий сравнивать значения зарплат между собой"""
-        if isinstance(self.salary, other):
+        if isinstance(self.salary, int):
             return self.salary <= other
 
-    # def __ge__(self, other: Any) -> bool:
-    #     if isinstance(self.salary, other):
-    #         return self.salary >= other
+    def __ge__(self, other: Any) -> bool:
+        if isinstance(self.salary, int):
+            return self.salary >= other
 
     @classmethod
     def from_dict(cls, vacancies: list[dict]) -> list:
@@ -54,5 +54,3 @@ class Vacancy:
         if requirements is None:
             self.requirements = "Не указано"
         return self.requirements
-
-
