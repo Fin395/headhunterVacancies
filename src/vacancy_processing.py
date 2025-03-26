@@ -3,6 +3,7 @@ from typing import Any
 
 class Vacancy:
     """Класс для работы с вакансиями"""
+
     __slots__ = ("name", "url", "salary", "currency", "requirement")
 
     def __init__(self, name: str, url: str, salary: dict, requirement: dict) -> None:
@@ -16,25 +17,40 @@ class Vacancy:
 
     def __str__(self) -> str:
         """Магический метод преобразования экземпляра класса в строку"""
-        return f"Вакансия: {self.name}, ссылка на вакансию: {self.url}, зарплата: {self.salary}, требования: {self.requirement}"
+        return (
+            f""
+            f"Вакансия: {self.name},"
+            f" ссылка на вакансию: {self.url},"
+            f" зарплата: {self.salary},"
+            f" требования: {self.requirement}"
+        )
 
     def __le__(self, other: Any) -> bool:
         """Магический метод, позволяющий сравнивать значения зарплат между собой"""
         if isinstance(self.salary, int):
             return self.salary <= other
+        else:
+            raise TypeError
 
     def __ge__(self, other: Any) -> bool:
         if isinstance(self.salary, int):
             return self.salary >= other
+        else:
+            raise TypeError
 
     @classmethod
     def from_dict(cls, vacancies: list[dict]) -> list:
         """Класс-метод, определяющий значения атрибутов объекта класса исходя
-         из полученных по API данных с сайта hh.ru и преобразующий указанные данные
-          в список экземпляров класса Vacancy"""
+        из полученных по API данных с сайта hh.ru и преобразующий указанные данные
+         в список экземпляров класса Vacancy"""
         vacancy_obj_list = []
         for vacancy in vacancies:
-            name, url, salary, requirement = vacancy["name"], vacancy["url"], vacancy["salary"], vacancy["snippet"]["requirement"]
+            name, url, salary, requirement = (
+                vacancy["name"],
+                vacancy["url"],
+                vacancy["salary"],
+                vacancy["snippet"]["requirement"],
+            )
             vacancy_obj_list.append(cls(name, url, salary, requirement))
         return vacancy_obj_list
 
@@ -43,7 +59,7 @@ class Vacancy:
             self.salary = 0
         elif isinstance(salary, dict):
             if not salary["from"] is None and not salary["to"] is None:
-                self.salary =salary["to"]
+                self.salary = salary["to"]
             elif not salary["from"] is None and salary["to"] is None:
                 self.salary = salary["from"]
             else:

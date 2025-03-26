@@ -4,6 +4,7 @@ from typing import Any
 
 class BaseApi(ABC):
     """Абстрактный класс для работы с API"""
+
     pass
 
     @abstractmethod

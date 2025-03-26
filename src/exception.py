@@ -11,6 +11,6 @@ class InputException(Exception):
         else:
             self.message = "По указанным критериям данные отсутствуют."
 
-    def __str__(self) -> str:
+    def __str__(self) -> Any:
         """Магический метод, который возвращает текст ошибки"""
         return self.message
