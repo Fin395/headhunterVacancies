@@ -15,11 +15,8 @@ def user_interaction():
     user_salary_range = input("Укажите диапазон зарплат (в формате 'от'-'до'): ") # Пример: 100000 - 150000
     try:
         ranged_vacancies = filter_by_salary(filtered_vacancies, user_salary_range)
-    except ValueError:
-        print("Вакансий с такой зарплатой не найдено. Попробуйте поискать что-нибудь другое.")
-    except TypeError:
-        print("Введен неверный формат диапазона зарплат.")
-
+    except ValueError as e:
+        print(f"{e}")
     else:
         sorted_vacancies = sort_vacancies(ranged_vacancies)
 
@@ -33,20 +30,3 @@ def user_interaction():
 
 if __name__ == "__main__":
     user_interaction()
-
-# status_selected = input(
-#         """
-# Введите статус, по которому необходимо выполнить фильтрацию.
-# Доступные для фильтровки статусы: EXECUTED, CANCELED, PENDING\n"""
-#     )
-#
-#     while status_selected.upper() not in ["EXECUTED", "CANCELED", "PENDING"]:
-#         print(f"Статус операции {status_selected} недоступен")
-#         status_selected = input(
-#             """
-# Введите статус, по которому необходимо выполнить фильтрацию.
-# Доступные для фильтровки статусы: EXECUTED, CANCELED, PENDING\n"""
-#         )
-#     if status_selected.upper() in ["EXECUTED", "CANCELED", "PENDING"]:
-#         print(f"Операции отфильтрованы по статусу {status_selected.upper()}.")
-#         filtered_transactions = filter_by_state(transactions_data, status_selected.upper())
