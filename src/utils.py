@@ -1,10 +1,14 @@
 def filter_by_words(vacancies: list, keywords: list) -> list:
     """Вспомогательная функция, которая фильтрует список вакансий по введенным пользователем ключевым словам"""
     vacancies_filtered_by_words = []
+    if len(keywords) == 0:
+        raise ValueError("Введите слова для поиска.")
     for word in keywords:
         for vacancy in vacancies:
             if word in vacancy.requirement.lower():
                 vacancies_filtered_by_words.append(vacancy)
+    if len(vacancies_filtered_by_words) == 0:
+        raise ValueError("Вакансий с таким описанием не найдено")
     return vacancies_filtered_by_words
 
 
@@ -21,7 +25,7 @@ def filter_by_salary(vacancies_list: list, salary_range: str) -> list:
             salary_range_from = int(salary_range.split("-")[0])
             salary_range_to = int(salary_range.split("-")[1])
         else:
-            raise ValueError("Неверный формат ввода. Неверный формат ввода. Введите данные в формате 'от'-'до'")
+            raise ValueError("Неверный формат ввода. Введите данные в формате 'от'-'до'")
 
         if salary_range_from > salary_range_to:
             raise ValueError("Значение 'от' не может быть больше значения 'до'")
