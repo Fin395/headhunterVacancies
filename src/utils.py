@@ -1,4 +1,4 @@
-from src.test import InputException
+from src.exception import InputException
 
 
 def filter_by_words(vacancies: list, keywords: list) -> list:

@@ -1,5 +1,5 @@
 from head_hunter_api import HeadHunter
-from src.test import InputException
+from src.exception import InputException
 from src.utils import filter_by_salary, sort_vacancies, filter_by_words, get_top_vacancies
 from src.vacancy_processing import Vacancy
 

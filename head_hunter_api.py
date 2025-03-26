@@ -1,7 +1,7 @@
 from src.base_api import BaseApi
 import requests
 
-from src.test import InputException
+from src.exception import InputException
 
 
 class HeadHunter(BaseApi):
