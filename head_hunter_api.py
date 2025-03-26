@@ -1,6 +1,8 @@
 from src.base_api import BaseApi
 import requests
 
+from src.test import InputException
+
 
 class HeadHunter(BaseApi):
     """Создаем на основе базового класса BaseApi класс для работы с HH"""
@@ -28,7 +30,7 @@ class HeadHunter(BaseApi):
     def get_vacancies(self, keyword: str) -> list:
         """Метод получения данных о вакансиях с сайта hh.ru """
         if len(keyword) == 0:
-            raise ValueError("Введите ключевое слово.")
+            raise InputException("Введите ключевое слово.")
         self.__params['text'] = keyword
         try:
             self._BaseApi__connect_api()
@@ -42,7 +44,7 @@ class HeadHunter(BaseApi):
             return []
         else:
             if len(self.__vacancies) == 0:
-                raise ValueError("По Вашему запросу вакансий не найдено")
+                raise InputException("По Вашему запросу вакансий не найдено")
             else:
                 return self.__vacancies
 
