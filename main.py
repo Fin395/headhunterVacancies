@@ -12,18 +12,41 @@ def user_interaction():
     vacancies_list = Vacancy.from_dict(hh_vacancies)
     filter_words = input("Введите ключевые слова для фильтрации вакансий: ").lower().split()
     filtered_vacancies = filter_by_words(vacancies_list, filter_words)
-
     user_salary_range = input("Укажите диапазон зарплат (в формате 'от'-'до'): ") # Пример: 100000 - 150000
-    ranged_vacancies = filter_by_salary(filtered_vacancies, user_salary_range)
-    sorted_vacancies = sort_vacancies(ranged_vacancies)
+    try:
+        ranged_vacancies = filter_by_salary(filtered_vacancies, user_salary_range)
+    except ValueError:
+        print("Вакансий с такой зарплатой не найдено. Попробуйте поискать что-нибудь другое.")
+    except TypeError:
+        print("Введен неверный формат диапазона зарплат.")
+
+    else:
+        sorted_vacancies = sort_vacancies(ranged_vacancies)
+
+
 
     # top_n = int(input("Введите количество вакансий для вывода в топ N: "))
-    # filter_words = input("Введите ключевые слова для фильтрации вакансий: ").split()
-    # filtered_vacancies = filter_vacancies(vacancies_list, filter_words)
     # top_vacancies = get_top_vacancies(sorted_vacancies, top_n)
     # print_vacancies(top_vacancies)
-    for vacancy in sorted_vacancies:
-        print(vacancy)
+        for vacancy in sorted_vacancies:
+            print(vacancy)
 
 if __name__ == "__main__":
     user_interaction()
+
+# status_selected = input(
+#         """
+# Введите статус, по которому необходимо выполнить фильтрацию.
+# Доступные для фильтровки статусы: EXECUTED, CANCELED, PENDING\n"""
+#     )
+#
+#     while status_selected.upper() not in ["EXECUTED", "CANCELED", "PENDING"]:
+#         print(f"Статус операции {status_selected} недоступен")
+#         status_selected = input(
+#             """
+# Введите статус, по которому необходимо выполнить фильтрацию.
+# Доступные для фильтровки статусы: EXECUTED, CANCELED, PENDING\n"""
+#         )
+#     if status_selected.upper() in ["EXECUTED", "CANCELED", "PENDING"]:
+#         print(f"Операции отфильтрованы по статусу {status_selected.upper()}.")
+#         filtered_transactions = filter_by_state(transactions_data, status_selected.upper())
