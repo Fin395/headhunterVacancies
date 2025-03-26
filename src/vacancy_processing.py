@@ -3,20 +3,20 @@ from typing import Any
 
 class Vacancy:
     """Класс для работы с вакансиями"""
-    __slots__ = ("name", "url", "salary", "requirements")
+    __slots__ = ("name", "url", "salary", "currency", "requirement")
 
-    def __init__(self, name: str, url: str, salary: dict, requirements: dict) -> None:
+    def __init__(self, name: str, url: str, salary: dict, requirement: dict) -> None:
         """Определяем атрибуты класса и применяем методы их валидации при инициализации"""
         self.name = name
         self.url = url
         self.salary = salary
         self.__validate_salary(salary)
-        self.requirements = requirements
-        self.__validate_requirement(requirements)
+        self.requirement = requirement
+        self.__validate_requirement(requirement)
 
     def __str__(self) -> str:
         """Магический метод преобразования экземпляра класса в строку"""
-        return f"Вакансия: {self.name}, ссылка на вакансию: {self.url}, зарплата: {self.salary}, требования: {self.requirements}"
+        return f"Вакансия: {self.name}, ссылка на вакансию: {self.url}, зарплата: {self.salary}, требования: {self.requirement}"
 
     def __le__(self, other: Any) -> bool:
         """Магический метод, позволяющий сравнивать значения зарплат между собой"""
@@ -34,8 +34,8 @@ class Vacancy:
           в список экземпляров класса Vacancy"""
         vacancy_obj_list = []
         for vacancy in vacancies:
-            name, url, salary, requirements = vacancy["name"], vacancy["url"], vacancy["salary"], vacancy["snippet"]["requirement"]
-            vacancy_obj_list.append(cls(name, url, salary, requirements))
+            name, url, salary, requirement = vacancy["name"], vacancy["url"], vacancy["salary"], vacancy["snippet"]["requirement"]
+            vacancy_obj_list.append(cls(name, url, salary, requirement))
         return vacancy_obj_list
 
     def __validate_salary(self, salary: None | dict) -> int:
@@ -50,7 +50,7 @@ class Vacancy:
                 self.salary = salary["to"]
         return self.salary
 
-    def __validate_requirement(self, requirements: None | dict) -> str:
-        if requirements is None:
-            self.requirements = "Не указано"
-        return self.requirements
+    def __validate_requirement(self, requirement: None | dict) -> str:
+        if requirement is None:
+            self.requirement = "Не указано"
+        return self.requirement

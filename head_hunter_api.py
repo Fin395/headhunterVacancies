@@ -39,4 +39,8 @@ class HeadHunter(BaseApi):
             print(f"Не удалось получить данные. Возникла ошибка: {e}")
             return []
         else:
-            return self.__vacancies
+            if len(self.__vacancies) == 0:
+                raise ValueError("По вашему запросу вакансий не найдено")
+            else:
+                return self.__vacancies
+

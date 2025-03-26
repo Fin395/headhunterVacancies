@@ -3,7 +3,7 @@ def filter_by_words(vacancies: list, keywords: list) -> list:
     vacancies_filtered_by_words = []
     for word in keywords:
         for vacancy in vacancies:
-            if word in vacancy.requirements.lower():
+            if word in vacancy.requirement.lower():
                 vacancies_filtered_by_words.append(vacancy)
     return vacancies_filtered_by_words
 
@@ -37,3 +37,8 @@ def sort_vacancies(list_vacancies_objects: list) -> list:
 
     sorted_vacancies = sorted(list_vacancies_objects, key=lambda x: x.salary, reverse = True)
     return sorted_vacancies
+
+
+def get_top_vacancies(vacancies: list, number: int) -> list:
+    """Получаем топ-N вакансий с наивысшей зарплатой (N получаем от пользователя)"""
+    return vacancies[0:number]
