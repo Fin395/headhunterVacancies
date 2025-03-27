@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from typing import Any
 
 
-class FileManager(ABC):
+class BaseFile(ABC):
     """Базовый класс для работы с файлами"""
     pass
 
