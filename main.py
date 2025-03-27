@@ -38,10 +38,9 @@ def user_interaction():
 
 if __name__ == "__main__":
 
-    result = user_interaction()
-    print(from_vacancy_to_dict(result))
-
-    # mng = FileManager()
-    # mng.add_to_file(result)
+    vacancies_obj = user_interaction()
+    vacancies_dict = from_vacancy_to_dict(vacancies_obj)
+    mng = FileManager()
+    mng.add_to_file(vacancies_dict)
     # mng.get_from_file()
 

@@ -13,10 +13,9 @@ class FileManager(BaseFile):
 
     def add_to_file(self, vacancies):
         with open(self.__name, "a", encoding="utf-8") as file:
-            for vacancy in vacancies:
-                file.write(f"{vacancy}\n")
+            json.dump(vacancies, file, indent=4, ensure_ascii=False)
 
-    def get_from_file(self):
-        with open(self.__name, "r", encoding="utf-8") as f:
-            vacancies = f.read()
-        print(vacancies)
+    # def get_from_file(self):
+    #     with open(self.__name, "r", encoding="utf-8") as f:
+    #         vacancies = f.read()
+    #     print(vacancies)

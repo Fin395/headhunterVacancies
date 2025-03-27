@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Frontend разработчик (React)",
+        "requirement": "В команду ищем Frontend-<highlighttext>разработчика</highlighttext> с уверенным знанием JavaScript, опытом работы с React и API Яндекс.Карт. Также приветствуется опыт разработки...",
+        "salary": 400000,
+        "url": "https://api.hh.ru/vacancies/118784167?host=hh.ru"
+    },
+    {
+        "name": "Java-разработчик",
+        "requirement": "Опыт командной коммерческой разработки на Java более 3-х лет. Spring. RabbitMQ. Знание NoSQL баз данных. Знания CI/CD, docker...",
+        "salary": 350000,
+        "url": "https://api.hh.ru/vacancies/118697891?host=hh.ru"
+    },
+    {
+        "name": "Java-разработчик",
+        "requirement": "Уровень не ниже middle. Отличное знание и опыт работы на Java 8+. Уверенное знания и опыт работы с Spring...",
+        "salary": 300000,
+        "url": "https://api.hh.ru/vacancies/118856468?host=hh.ru"
+    },
+    {
+        "name": "Front-end разработчик (React)",
+        "requirement": "Уверенные знания JavaScript (es5, es6, esNext, closure, promise, event loop, job queue). Практический опыт использования React (hooks only). ",
+        "salary": 280000,
+        "url": "https://api.hh.ru/vacancies/118805740?host=hh.ru"
+    },
+    {
+        "name": "Java-разработчик (junior+/middle)",
+        "requirement": "Опыт в коммерческой Java-разработке от 2 лет. Уверенные знания Core Java, в т.ч. многопоточность (обязательно). Уверенные знания концепций...",
+        "salary": 250000,
+        "url": "https://api.hh.ru/vacancies/118727702?host=hh.ru"
+    }
+]
