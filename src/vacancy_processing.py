@@ -32,6 +32,7 @@ class Vacancy:
         else:
             raise TypeError
 
+
     @classmethod
     def from_dict(cls, vacancies: list[dict]) -> list:
         """Класс-метод, определяющий значения атрибутов объекта класса исходя

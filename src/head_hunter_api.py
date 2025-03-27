@@ -47,4 +47,3 @@ class HeadHunter(BaseApi):
                 raise InputException("По Вашему запросу вакансий не найдено")
             else:
                 return self.__vacancies
-

@@ -1,7 +1,7 @@
 from src.head_hunter_api import HeadHunter
 from src.exception import InputException
 from src.file import FileManager
-from src.utils import filter_by_salary, sort_vacancies, filter_by_words, get_top_vacancies
+from src.utils import filter_by_salary, sort_vacancies, filter_by_words, get_top_vacancies, from_vacancy_to_dict
 from src.vacancy_processing import Vacancy
 
 
@@ -37,6 +37,11 @@ def user_interaction():
                     return top_vacancies
 
 if __name__ == "__main__":
+
     result = user_interaction()
-    mng = FileManager()
-    mng.add_to_file(result)
+    print(from_vacancy_to_dict(result))
+
+    # mng = FileManager()
+    # mng.add_to_file(result)
+    # mng.get_from_file()
+

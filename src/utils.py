@@ -1,4 +1,5 @@
 from src.exception import InputException
+import inspect
 
 
 def filter_by_words(vacancies: list, keywords: list) -> list:
@@ -51,3 +52,16 @@ def sort_vacancies(list_vacancies_objects: list) -> list:
 def get_top_vacancies(vacancies: list, number: int) -> list:
     """Получаем топ-N вакансий с наивысшей зарплатой (N получаем от пользователя)"""
     return vacancies[0:number]
+
+
+
+def from_vacancy_to_dict(vacancies):
+    vacancies_dict_list = []
+    for vacancy in vacancies:
+        dict_from_vacancy = {
+        attr: val
+        for attr, val in inspect.getmembers(vacancy)
+        if not attr.startswith('__') and not inspect.ismethod(val)
+    }
+        vacancies_dict_list.append(dict_from_vacancy)
+    return vacancies_dict_list

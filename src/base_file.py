@@ -16,10 +16,10 @@ class BaseFile(ABC):
         """Абстрактный метод для записи данных в файл"""
         pass
 
-    # @abstractmethod
-    # def get_from_file(self, *args: Any, **kwargs: Any) -> None:
-    #     """Абстрактный метод для получения данных из файла"""
-    #     pass
+    @abstractmethod
+    def get_from_file(self, *args: Any, **kwargs: Any) -> None:
+         """Абстрактный метод для получения данных из файла"""
+         pass
     #
     # @abstractmethod
     # def remove_from_file(self, *args: Any, **kwargs: Any) -> None:

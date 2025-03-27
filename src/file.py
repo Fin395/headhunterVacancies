@@ -15,3 +15,8 @@ class FileManager(BaseFile):
         with open(self.__name, "a", encoding="utf-8") as file:
             for vacancy in vacancies:
                 file.write(f"{vacancy}\n")
+
+    def get_from_file(self):
+        with open(self.__name, "r", encoding="utf-8") as f:
+            vacancies = f.read()
+        print(vacancies)
