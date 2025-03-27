@@ -17,13 +17,7 @@ class Vacancy:
 
     def __str__(self) -> str:
         """Магический метод преобразования экземпляра класса в строку"""
-        return (
-            f""
-            f"Вакансия: {self.name},"
-            f" ссылка на вакансию: {self.url},"
-            f" зарплата: {self.salary},"
-            f" требования: {self.requirement}"
-        )
+        return f'"Вакансия": "{self.name}", "ссылка на вакансию": "{self.url}", "зарплата": "{self.salary}", "требования": "{self.requirement}"'
 
     def __le__(self, other: Any) -> bool:
         """Магический метод, позволяющий сравнивать значения зарплат между собой"""
