@@ -1,11 +1,11 @@
-from head_hunter_api import HeadHunter
+from src.head_hunter_api import HeadHunter
 from src.exception import InputException
+from src.file import FileManager
 from src.utils import filter_by_salary, sort_vacancies, filter_by_words, get_top_vacancies
 from src.vacancy_processing import Vacancy
 
 
 hh_api = HeadHunter()
-
 
 def user_interaction():
     user_search_query = input("Введите ключевое слово для поиска вакансий: ") # Пример: "разработчик"
@@ -34,8 +34,9 @@ def user_interaction():
                     print(e)
                 else:
                     top_vacancies = get_top_vacancies(sorted_vacancies, top_n)
-                    for vacancy in top_vacancies:
-                        print(vacancy)
+                    return top_vacancies
 
 if __name__ == "__main__":
-    user_interaction()
+    result = user_interaction()
+    mng = FileManager()
+    mng.add_to_file(result)
