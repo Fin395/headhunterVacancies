@@ -17,7 +17,7 @@ class HeadHunter(BaseApi):
         """Метод инициализации экземпляра класса"""
         self.__url = 'https://api.hh.ru/vacancies'
         self.__headers = {'User-Agent': 'HH-User-Agent'}
-        self.__params = {'text': '', 'page': 0, 'per_page': 20}
+        self.__params = {'text': '', 'page': 0, 'per_page': 100, 'area': 123}
         self.__vacancies = []
         super().__init__()
 

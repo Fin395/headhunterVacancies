@@ -10,6 +10,12 @@ class FileManager(BaseFile):
 
     def __init__(self, name: Optional[str] = DEFAULT_JSON) -> None:
         self.__name = name
+        # self.check_and_create()
+
+    # def check_and_create(self):
+    #     if not os.path.exists(self.__name):
+    #         with open (self.__name, "w", encoding="utf-8") as file:
+    #             file.write('[]')
 
     def add_to_file(self, vacancies):
         with open(self.__name, "a", encoding="utf-8") as file:

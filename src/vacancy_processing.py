@@ -10,6 +10,7 @@ class Vacancy:
         """Определяем атрибуты класса и применяем методы их валидации при инициализации"""
         self.name = name
         self.url = url
+
         self.salary = salary
         self.__validate_salary(salary)
         self.requirement = requirement
