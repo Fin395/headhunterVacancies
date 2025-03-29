@@ -19,18 +19,13 @@ class Vacancy:
         """Магический метод преобразования экземпляра класса в строку"""
         return f'"Вакансия": "{self.name}", "ссылка на вакансию": "{self.url}", "зарплата": "{self.salary}", "требования": "{self.requirement}"'
 
-    def __le__(self, other: Any) -> bool:
+    def __lt__(self, other: "Vacancy") -> bool:
         """Магический метод, позволяющий сравнивать значения зарплат между собой"""
-        if isinstance(self.salary, int):
-            return self.salary <= other
-        else:
-            raise TypeError
+        return self.salary < other.salary
 
-    def __ge__(self, other: Any) -> bool:
-        if isinstance(self.salary, int):
-            return self.salary >= other
-        else:
-            raise TypeError
+
+    def __gt__(self, other: "Vacancy") -> bool:
+        return self.salary > other.salary
 
 
     @classmethod
