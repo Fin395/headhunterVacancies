@@ -10,7 +10,6 @@ class Vacancy:
         """Определяем атрибуты класса и применяем методы их валидации при инициализации"""
         self.name = name
         self.url = url
-
         self.salary = salary
         self.__validate_salary(salary)
         self.requirement = requirement
@@ -43,7 +42,7 @@ class Vacancy:
         for vacancy in vacancies:
             name, url, salary, requirement = (
                 vacancy["name"],
-                vacancy["url"],
+                vacancy["alternate_url"],
                 vacancy["salary"],
                 vacancy["snippet"]["requirement"],
             )
