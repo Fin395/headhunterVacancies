@@ -35,11 +35,12 @@ def user_interaction():
                 else:
                     top_vacancies = get_top_vacancies(sorted_vacancies, top_n)
                     return top_vacancies
+                          # вывести вакансии пользователю
 
 if __name__ == "__main__":
 
-    vacancies_obj = user_interaction()
-    vacancies_dict = from_vacancy_to_dict(vacancies_obj)
+    user_vacancies = user_interaction()
+    vacancies_dict = from_vacancy_to_dict(user_vacancies)
     mng = FileManager()
     mng.add_to_file(vacancies_dict)
     mng.get_from_file()

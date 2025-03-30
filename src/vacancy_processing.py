@@ -4,10 +4,11 @@ from typing import Any
 class Vacancy:
     """Класс для работы с вакансиями"""
 
-    __slots__ = ("name", "url", "salary", "currency", "requirement")
+    __slots__ = ("id", "name", "url", "salary", "currency", "requirement")
 
-    def __init__(self, name: str, url: str, salary: dict, requirement: dict) -> None:
+    def __init__(self, id, name: str, url: str, salary: dict, requirement: dict) -> None:
         """Определяем атрибуты класса и применяем методы их валидации при инициализации"""
+        self.id = id
         self.name = name
         self.url = url
         self.salary = salary
@@ -17,7 +18,7 @@ class Vacancy:
 
     def __str__(self) -> str:
         """Магический метод преобразования экземпляра класса в строку"""
-        return f'"Вакансия": "{self.name}", "ссылка на вакансию": "{self.url}", "зарплата": "{self.salary}", "требования": "{self.requirement}"'
+        return f'"Вакансия": "{self.id}", "{self.name}", "ссылка на вакансию": "{self.url}", "зарплата": "{self.salary}", "требования": "{self.requirement}"'
 
     def __lt__(self, other: "Vacancy") -> bool:
         """Магический метод, позволяющий сравнивать значения зарплат между собой"""
@@ -25,6 +26,7 @@ class Vacancy:
 
 
     def __gt__(self, other: "Vacancy") -> bool:
+        """Магический метод, позволяющий сравнивать значения зарплат между собой"""
         return self.salary > other.salary
 
 
@@ -35,13 +37,14 @@ class Vacancy:
          в список экземпляров класса Vacancy"""
         vacancy_obj_list = []
         for vacancy in vacancies:
-            name, url, salary, requirement = (
+            id, name, url, salary, requirement = (
+                vacancy["id"],
                 vacancy["name"],
                 vacancy["alternate_url"],
                 vacancy["salary"],
                 vacancy["snippet"]["requirement"],
             )
-            vacancy_obj_list.append(cls(name, url, salary, requirement))
+            vacancy_obj_list.append(cls(id, name, url, salary, requirement))
         return vacancy_obj_list
 
     def __validate_salary(self, salary: None | dict) -> int:

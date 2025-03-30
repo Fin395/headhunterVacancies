@@ -44,7 +44,6 @@ def filter_by_salary(vacancies_list: list, salary_range: str) -> list:
 
 def sort_vacancies(list_vacancies_objects: list) -> list:
     """Вспомогательная функция, которая сортирует вакансии по зарплате от большего к меньшему"""
-
     sorted_vacancies = sorted(list_vacancies_objects, reverse=True)
     return sorted_vacancies
 
@@ -52,7 +51,6 @@ def sort_vacancies(list_vacancies_objects: list) -> list:
 def get_top_vacancies(vacancies: list, number: int) -> list:
     """Получаем топ-N вакансий с наивысшей зарплатой (N получаем от пользователя)"""
     return vacancies[0:number]
-
 
 
 def from_vacancy_to_dict(vacancies):
