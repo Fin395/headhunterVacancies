@@ -5,9 +5,9 @@ from src.utils import filter_by_salary, sort_vacancies, filter_by_words, get_top
 from src.vacancy import Vacancy
 
 
-hh_api = HeadHunter()
-
 def user_interaction():
+    hh_api = HeadHunter()
+
     user_search_query = input("Введите ключевое слово для поиска вакансий: ") # Пример: "разработчик"
     try:
         hh_vacancies = hh_api.get_vacancies(user_search_query)
@@ -21,7 +21,7 @@ def user_interaction():
         except InputException as e:
             print(e)
         else:
-            user_salary_range = input("Укажите диапазон зарплат (в формате 'от'-'до'): ") # Пример: 100000 - 150000
+            user_salary_range = input("Укажите диапазон зарплат (в формате 'от'-'до'): ") # Пример: 100000 - 500000
             try:
                 ranged_vacancies = filter_by_salary(filtered_vacancies, user_salary_range)
             except InputException as e:
@@ -41,16 +41,13 @@ def user_interaction():
                     user_get_or_delete = input("Показать список отобранных вакансий или удалить? (показать/удалить): ")
                     if user_get_or_delete.lower() == "показать":
                         mng.get_from_file()
-                        print("Вакансии добавлены")
+                        print("Вакансии добавлены в список сохраненных")
                     else:
                         mng.remove_from_file()
                         print("Сведения удалены")
 
 
 if __name__ == "__main__":
-
     user_interaction()
-    # mng = FileManager()
-    # mng.add_to_file(user_vacancies)
-    # mng.get_from_file()
+
 
