@@ -1,6 +1,6 @@
 import json
 import os
-from typing import Optional, Any
+from typing import Optional
 
 from config import DEFAULT_JSON
 from src.base_file import BaseFile
@@ -48,6 +48,6 @@ class FileManager(BaseFile):
             print(vacancy)
 
     def remove_from_file(self) -> None:
+        """Удаляем вакансии из файла и оставляем пустой список"""
         with open(self.__name, "w", encoding="utf-8") as file:
             file.write("[]")
-

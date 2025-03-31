@@ -1,6 +1,6 @@
-from src.base_api import BaseApi
 import requests
 
+from src.base_api import BaseApi
 from src.exception import InputException
 
 

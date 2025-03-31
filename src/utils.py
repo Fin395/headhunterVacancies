@@ -1,6 +1,6 @@
-from src.exception import InputException
 import inspect
 
+from src.exception import InputException
 from src.vacancy import Vacancy
 
 
