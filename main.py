@@ -34,8 +34,9 @@ def user_interaction():
                     print(e)
                 else:
                     top_vacancies = get_top_vacancies(sorted_vacancies, top_n)
+                    for vacancy in top_vacancies:
+                        print(vacancy)
                     return top_vacancies
-                          # вывести вакансии пользователю
 
 if __name__ == "__main__":
 
@@ -43,5 +44,5 @@ if __name__ == "__main__":
     vacancies_dict = from_vacancy_to_dict(user_vacancies)
     mng = FileManager()
     mng.add_to_file(vacancies_dict)
-    mng.get_from_file()
+    # mng.get_from_file()
 

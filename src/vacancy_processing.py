@@ -18,7 +18,7 @@ class Vacancy:
 
     def __str__(self) -> str:
         """Магический метод преобразования экземпляра класса в строку"""
-        return f'"Вакансия": "{self.id}", "{self.name}", "ссылка на вакансию": "{self.url}", "зарплата": "{self.salary}", "требования": "{self.requirement}"'
+        return f'id вакансии: {self.id}, наименование вакансии: {self.name}, ссылка на вакансию: {self.url}, зарплата: {self.salary}, требования: {self.requirement}'
 
     def __lt__(self, other: "Vacancy") -> bool:
         """Магический метод, позволяющий сравнивать значения зарплат между собой"""
