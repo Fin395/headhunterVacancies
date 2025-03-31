@@ -37,11 +37,19 @@ def user_interaction():
                     for vacancy in top_vacancies:
                         print(vacancy)
                     return top_vacancies
+    mng = FileManager()
+    mng.add_to_file(top_vacancies)
+    user_get_or_delete = input("Показать список выбранных вакансий или удалить? (показать/удалить): ")
+    if user_get_or_delete.lower() == "показать":
+        mng.get_from_file()
+    else:
+        print("Данные удалены")
+
 
 if __name__ == "__main__":
 
-    user_vacancies = user_interaction()
-    mng = FileManager()
-    mng.add_to_file(user_vacancies)
+    user_interaction()
+    # mng = FileManager()
+    # mng.add_to_file(user_vacancies)
     # mng.get_from_file()
 
