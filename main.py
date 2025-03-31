@@ -2,7 +2,7 @@ from src.head_hunter_api import HeadHunter
 from src.exception import InputException
 from src.file import FileManager
 from src.utils import filter_by_salary, sort_vacancies, filter_by_words, get_top_vacancies, from_vacancy_to_dict
-from src.vacancy_processing import Vacancy
+from src.vacancy import Vacancy
 
 
 hh_api = HeadHunter()
@@ -36,14 +36,15 @@ def user_interaction():
                     top_vacancies = get_top_vacancies(sorted_vacancies, top_n)
                     for vacancy in top_vacancies:
                         print(vacancy)
-                    return top_vacancies
-    mng = FileManager()
-    mng.add_to_file(top_vacancies)
-    user_get_or_delete = input("Показать список выбранных вакансий или удалить? (показать/удалить): ")
-    if user_get_or_delete.lower() == "показать":
-        mng.get_from_file()
-    else:
-        print("Данные удалены")
+                    mng = FileManager()
+                    mng.add_to_file(top_vacancies)
+                    user_get_or_delete = input("Показать список отобранных вакансий или удалить? (показать/удалить): ")
+                    if user_get_or_delete.lower() == "показать":
+                        mng.get_from_file()
+                        print("Вакансии добавлены")
+                    else:
+                        mng.remove_from_file()
+                        print("Сведения удалены")
 
 
 if __name__ == "__main__":

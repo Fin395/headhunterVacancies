@@ -4,6 +4,7 @@ from typing import Any
 
 class BaseFile(ABC):
     """Базовый класс для работы с файлами"""
+
     pass
 
     @abstractmethod
@@ -18,10 +19,10 @@ class BaseFile(ABC):
 
     @abstractmethod
     def get_from_file(self, *args: Any, **kwargs: Any) -> None:
-          """Абстрактный метод для получения данных из файла"""
-          pass
-    #
-    # @abstractmethod
-    # def remove_from_file(self, *args: Any, **kwargs: Any) -> None:
-    #     """Абстрактный метод для удаления данных из файла класса"""
-    #     pass
+        """Абстрактный метод для получения данных из файла"""
+        pass
+
+    @abstractmethod
+    def remove_from_file(self, *args: Any, **kwargs: Any) -> None:
+        """Абстрактный метод для удаления данных из файла класса"""
+        pass

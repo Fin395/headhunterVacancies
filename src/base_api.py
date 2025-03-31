@@ -18,6 +18,6 @@ class BaseApi(ABC):
         pass
 
     @abstractmethod
-    def get_vacancies(self, *args: Any, **kwargs: Any) -> None:
+    def get_vacancies(self, *args: Any, **kwargs: Any) -> list:
         """Абстрактный метод для получения вакансий"""
         pass

@@ -1,6 +1,8 @@
 from src.exception import InputException
 import inspect
 
+from src.vacancy import Vacancy
+
 
 def filter_by_words(vacancies: list, keywords: list) -> list:
     """Вспомогательная функция, которая фильтрует список вакансий по введенным пользователем ключевым словам"""
@@ -16,7 +18,7 @@ def filter_by_words(vacancies: list, keywords: list) -> list:
     return vacancies_filtered_by_words
 
 
-def filter_by_salary(vacancies_list: list, salary_range: str) -> list:
+def filter_by_salary(vacancies_list: list, salary_range: str) -> list | None:
     """Вспомогательная функция, которая фильтрует список вакансий по диапазону зарплаты, полученного от пользователя"""
     if len(salary_range) == 0:
         raise InputException("Введите значения: 'от' и 'до'")
@@ -53,13 +55,15 @@ def get_top_vacancies(vacancies: list, number: int) -> list:
     return vacancies[0:number]
 
 
-def from_vacancy_to_dict(vacancies):
+def from_vacancy_to_dict(vacancies: list[Vacancy]) -> list[dict]:
+    """Преобразуем список экземпляров класса Vacancy в список словарей,
+    в которых ключи соответствуют атрибутам экземпляра"""
     vacancies_dict_list = []
     for vacancy in vacancies:
         dict_from_vacancy = {
-        attr: val
-        for attr, val in inspect.getmembers(vacancy)
-        if not attr.startswith('__') and not inspect.ismethod(val)
-    }
+            attr: val
+            for attr, val in inspect.getmembers(vacancy)
+            if not attr.startswith("__") and not inspect.ismethod(val)
+        }
         vacancies_dict_list.append(dict_from_vacancy)
     return vacancies_dict_list
