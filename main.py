@@ -41,8 +41,7 @@ def user_interaction():
 if __name__ == "__main__":
 
     user_vacancies = user_interaction()
-    vacancies_dict = from_vacancy_to_dict(user_vacancies)
     mng = FileManager()
-    mng.add_to_file(vacancies_dict)
+    mng.add_to_file(user_vacancies)
     # mng.get_from_file()
 

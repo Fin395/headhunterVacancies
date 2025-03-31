@@ -14,10 +14,66 @@
         "url": "https://hh.ru/vacancy/118811735"
     },
     {
+        "id": "118312276",
+        "name": "Аналитик данных",
+        "requirement": "Опыт работы аналитиком данных от 2-х лет. Уверенное знание Python с аналитическими библиотеками и SQL: Clickhouse, MySQL. ",
+        "salary": 400000,
+        "url": "https://hh.ru/vacancy/118312276"
+    },
+    {
         "id": "118941903",
         "name": "Junior+ Java-разработчик",
         "requirement": "Опыт работы с Java от 1 года. Знание Spring Boot, Hibernate. Опыт работы с реляционными базами данных (SQL). ",
         "salary": 450000,
         "url": "https://hh.ru/vacancy/118941903"
+    },
+    {
+        "id": "118941891",
+        "name": "Junior+ Java-разработчик",
+        "requirement": "Опыт работы с Java от 1 года. Знание Spring Boot, Hibernate. Опыт работы с реляционными базами данных (SQL). ",
+        "salary": 450000,
+        "url": "https://hh.ru/vacancy/118941891"
+    },
+    {
+        "id": "118941869",
+        "name": "Junior Java Developer",
+        "requirement": "Базовые знания Java, ООП и основных принципов разработки. Опыт работы с фреймворками Java (например, Spring, Hibernate). Знания в области работы...",
+        "salary": 450000,
+        "url": "https://hh.ru/vacancy/118941869"
+    },
+    {
+        "id": "118700389",
+        "name": "Python Developer (Middle+/Senior)",
+        "requirement": "Опыт разработки на Python и Django от 5 лет. Уверенные навыки работы с базами данных и брокерами сообщений (PostgreSQL, Celery...",
+        "salary": 350000,
+        "url": "https://hh.ru/vacancy/118700389"
+    },
+    {
+        "id": "118941947",
+        "name": "Junior Python Developer",
+        "requirement": "Знания Python на базовом уровне. Опыт работы с фреймворками Flask или Django (будет плюсом). Опыт работы с реляционными базами данных...",
+        "salary": 300000,
+        "url": "https://hh.ru/vacancy/118941947"
+    },
+    {
+        "id": "118618502",
+        "name": "Backend-разработчик",
+        "requirement": "Желание учиться и развиваться в сфере программирования. Базовые знания одного из языков программирования (например, Python, Java, C++). Умение работать в...",
+        "salary": 300000,
+        "url": "https://hh.ru/vacancy/118618502"
+    },
+    {
+        "id": "118702008",
+        "name": "Разработчик Python",
+        "requirement": "Понимание принципов ООП. Хорошее понимание протокола HTTP и REST. Python 3, Django, Git, SQL. Опыт разворачивания решения на сервере (nginx...",
+        "salary": 300000,
+        "url": "https://hh.ru/vacancy/118702008"
+    },
+    {
+        "id": "118909432",
+        "name": "Python разработчик (DDI)",
+        "requirement": "Компетенции в Python 3.12 и выше. Практический опыт разработки микро-сервисной архитектуры приложений «под Linux». Опыт использования FAST API. ",
+        "salary": 300000,
+        "url": "https://hh.ru/vacancy/118909432"
     }
 ]
