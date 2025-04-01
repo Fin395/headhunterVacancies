@@ -1,3 +1,6 @@
+from src.vacancy import Vacancy
+
+
 def test_vacancy_init(first_vacancy):
     assert first_vacancy.id == 93353083
     assert first_vacancy.name == "Тестировщик комфорта квартир"
@@ -23,5 +26,11 @@ def test_vacancy_lt_and_gt(first_vacancy, second_vacancy):
     result2 = first_vacancy > second_vacancy
     assert result1 is False
     assert result2 is True
+
+
+def test_vacancy_from_dict(list_of_vacancies_dict):
+    vacancies_obj_list = Vacancy.from_dict(list_of_vacancies_dict)
+    assert vacancies_obj_list[0].id == "93353083"
+    assert vacancies_obj_list[1].id == "92223756"
 
 
