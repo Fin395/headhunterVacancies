@@ -6,7 +6,7 @@ class Vacancy:
 
     __slots__ = ("id", "name", "salary", "url", "requirement")
 
-    def __init__(self, id: int, name: str, salary: dict | None, url: str, requirement: str) -> None:
+    def __init__(self, id: int, name: str, salary: dict | None, url: str, requirement: str | None) -> None:
         """Определяем атрибуты класса и применяем методы их валидации при инициализации"""
         self.id = id
         self.name = name
@@ -66,7 +66,7 @@ class Vacancy:
                 self.salary = int(salary["to"])
         return self.salary
 
-    def __validate_requirement(self, requirement: str) -> str:
+    def __validate_requirement(self, requirement: str | None) -> str:
         """Приватный метод валидации атрибута requirement.
         Преобразует None в строковое значение 'Не указано'"""
         if requirement is None:
