@@ -28,7 +28,7 @@ def test_vacancy_lt_and_gt(first_vacancy, second_vacancy):
     assert result2 is True
 
 
-def test_vacancy_from_dict(list_of_vacancies_dict):
+def test_vacancy_from_dict(list_of_vacancies_dict) -> None:
     vacancies_obj_list = Vacancy.from_dict(list_of_vacancies_dict)
     assert vacancies_obj_list[0].id == "93353083"
     assert vacancies_obj_list[1].id == "92223756"
