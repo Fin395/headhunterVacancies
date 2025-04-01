@@ -20,6 +20,26 @@ class HeadHunter(BaseApi):
         self.__vacancies = []
         super().__init__()
 
+    @property
+    def url(self) -> str:
+        """Создаем геттер для получения значения приватного атрибута '__url'"""
+        return self.__url
+
+    @property
+    def headers(self) -> dict:
+        """Создаем геттер для получения значения приватного атрибута '__headers'"""
+        return self.__headers
+
+    @property
+    def params(self) -> dict:
+        """Создаем геттер для получения значения приватного атрибута '__params'"""
+        return self.__params
+
+    @property
+    def vacancies(self) -> list:
+        """Создаем геттер для получения значения приватного атрибута '__vacancies'"""
+        return self.__vacancies
+
     def _BaseApi__connect_api(self) -> None:
         """Метод для проверки подключения к API"""
         response = requests.get(self.__url, headers=self.__headers, params=self.__params)
