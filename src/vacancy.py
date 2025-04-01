@@ -4,15 +4,15 @@ from typing import Any
 class Vacancy:
     """Класс для работы с вакансиями"""
 
-    __slots__ = ("id", "name", "url", "salary", "currency", "requirement")
+    __slots__ = ("id", "name", "salary", "url", "requirement")
 
-    def __init__(self, id: int, name: str, url: str, salary: dict, requirement: str) -> None:
+    def __init__(self, id: int, name: str, salary: dict | None, url: str, requirement: str) -> None:
         """Определяем атрибуты класса и применяем методы их валидации при инициализации"""
         self.id = id
         self.name = name
-        self.url = url
         self.salary = salary
         self.__validate_salary(salary)
+        self.url = url
         self.requirement = requirement
         self.__validate_requirement(requirement)
 
@@ -22,8 +22,8 @@ class Vacancy:
             f""
             f"id вакансии: {self.id},"
             f" наименование вакансии: {self.name},"
-            f" ссылка на вакансию: {self.url},"
             f" зарплата: {self.salary},"
+            f" ссылка на вакансию: {self.url},"
             f" требования: {self.requirement}"
         )
 
@@ -42,14 +42,14 @@ class Vacancy:
          в список экземпляров класса Vacancy"""
         vacancy_obj_list = []
         for vacancy in vacancies:
-            id, name, url, salary, requirement = (
+            id, name,salary, url, requirement = (
                 vacancy["id"],
                 vacancy["name"],
-                vacancy["alternate_url"],
                 vacancy["salary"],
+                vacancy["alternate_url"],
                 vacancy["snippet"]["requirement"],
             )
-            vacancy_obj_list.append(cls(id, name, url, salary, requirement))
+            vacancy_obj_list.append(cls(id, name, salary, url, requirement))
         return vacancy_obj_list
 
     def __validate_salary(self, salary: None | dict) -> int:
