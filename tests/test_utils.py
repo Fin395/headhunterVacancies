@@ -1,7 +1,7 @@
 import pytest
 
 from src.exception import InputException
-from src.utils import filter_by_words, sort_vacancies
+from src.utils import filter_by_words, sort_vacancies, get_top_vacancies
 from src.vacancy import Vacancy
 
 
@@ -29,5 +29,12 @@ def test_sort_vacancies(vacancies_obj_list):
     assert sorted_vacancies[1].id == 92223870
     assert sorted_vacancies[2].id == 93353083
 
+
+def test_get_top_vacancies(vacancies_obj_list):
+    sorted_vacancies = sort_vacancies(vacancies_obj_list)
+    top_vacancies = get_top_vacancies(sorted_vacancies, 2)
+    assert len(top_vacancies) == 2
+    assert top_vacancies[0].id == 92223756
+    assert top_vacancies[1].id == 92223870
 
 
