@@ -4,7 +4,7 @@ from src.exception import InputException
 from src.vacancy import Vacancy
 
 
-def filter_by_words(vacancies: list, keywords: list) -> list:
+def filter_by_words(vacancies: list[Vacancy], keywords: list[str]) -> list:
     """Вспомогательная функция, которая фильтрует список вакансий по введенным пользователем ключевым словам"""
     if len(keywords) == 0:
         raise InputException("Введите слова для поиска.")
@@ -17,7 +17,7 @@ def filter_by_words(vacancies: list, keywords: list) -> list:
 
 
 
-def filter_by_salary(vacancies_list: list, salary_range: str) -> list | None:
+def filter_by_salary(vacancies_list: list[Vacancy], salary_range: str) -> list | None:
     """Вспомогательная функция, которая фильтрует список вакансий по диапазону зарплаты, полученного от пользователя"""
     if len(salary_range) == 0:
         raise InputException("Введите значения: 'от' и 'до'")
