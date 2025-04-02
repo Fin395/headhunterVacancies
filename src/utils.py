@@ -6,16 +6,15 @@ from src.vacancy import Vacancy
 
 def filter_by_words(vacancies: list, keywords: list) -> list:
     """Вспомогательная функция, которая фильтрует список вакансий по введенным пользователем ключевым словам"""
-    vacancies_filtered_by_words = []
     if len(keywords) == 0:
         raise InputException("Введите слова для поиска.")
-    for word in keywords:
-        for vacancy in vacancies:
-            if word in vacancy.requirement.lower():
-                vacancies_filtered_by_words.append(vacancy)
-    if len(vacancies_filtered_by_words) == 0:
-        raise InputException("Вакансий с таким описанием не найдено")
-    return vacancies_filtered_by_words
+    else:
+        for word in keywords:
+            vacancies_filtered_by_words = list(filter(lambda x: word in x.requirement.lower(), vacancies))
+            if len(vacancies_filtered_by_words) == 0:
+                raise InputException("Вакансий с таким описанием не найдено")
+            return vacancies_filtered_by_words
+
 
 
 def filter_by_salary(vacancies_list: list, salary_range: str) -> list | None:
