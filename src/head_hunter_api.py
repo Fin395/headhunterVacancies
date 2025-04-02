@@ -46,6 +46,10 @@ class HeadHunter(BaseApi):
         if response.status_code != 200:
             raise requests.exceptions.RequestException
 
+    def public_baseapi__connect_api(self) -> None:
+        """Геттер для получения результата работы приватного метода _BaseApi__connect_api"""
+        return self._BaseApi__connect_api()
+
     def get_vacancies(self, keyword: str) -> list:
         """Метод получения данных о вакансиях с сайта hh.ru"""
         if len(keyword) == 0:
