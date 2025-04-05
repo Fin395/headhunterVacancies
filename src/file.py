@@ -22,6 +22,11 @@ class FileManager(BaseFile):
             with open(self.__name, "w", encoding="utf-8") as file:
                 file.write("[]")
 
+    @property
+    def name(self) -> str:
+        """Создаем геттер для получения значения приватного атрибута '__name'"""
+        return self.__name
+
     def add_to_file(self, new_vacancies: list[Vacancy]) -> None:
         """Сохраняем отобранные по критериям пользователя вакансии в файл с проверкой на наличие дубликатов"""
         new_vacancies_as_dict = from_vacancy_to_dict(new_vacancies)
