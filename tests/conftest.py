@@ -1,5 +1,6 @@
 import pytest
 
+from src.file import FileManager
 from src.head_hunter_api import HeadHunter
 from src.vacancy import Vacancy
 
@@ -103,3 +104,16 @@ def list_of_vacancies_dict():
         }
     ]
 
+@pytest.fixture
+def filename_default():
+    return FileManager()
+
+@pytest.fixture
+def filename_custom():
+    return FileManager("my_json_file.json")
+
+@pytest.fixture
+def vacancies_obj_list_with_duplicate():
+    obj1 = Vacancy(93353083, "Тестировщик комфорта квартир", {"from": 15000, "to": 25000}, "https://hh.ru/employer/3499705", "Занимать активную жизненную позицию, уметь активно танцевать и громко петь. Обладать навыками коммуникации, чтобы налаживать добрососедские отношения. Обладать системным мышлением...")
+    obj2 = Vacancy(92752367, "Менеджер по продажам недвижимости", {"from": 500000, "to": 1000000}, "https://hh.ru/vacancy/92752367", "Отличные коммуникативные навыки, способность найти подход к каждому клиенту. Навыки проведения деловых переговоров. Наличие амбициозных целей и успешный опыт их...")
+    return [obj1, obj2]
