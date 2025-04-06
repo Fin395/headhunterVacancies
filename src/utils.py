@@ -34,8 +34,19 @@ def filter_by_salary(vacancies_list: list[Vacancy], salary_range: str) -> list |
 
         if salary_range_from > salary_range_to:
             raise InputException("Значение 'от' не может быть больше значения 'до'")
+
+        elif salary_range_from == salary_range_to:
+            if any(salary_range_to <= vacancy.salary for vacancy in vacancies_list):
+                vacancies_filtered_by_salary = list(
+                    filter(lambda x: salary_range_to <= x.salary >= salary_range_from, vacancies_list)
+            )
+                return vacancies_filtered_by_salary
+            else:
+                raise InputException("Вакансий с такой зарплатой не найдено. Попробуйте поискать что-нибудь другое.")
+
         elif all(vacancy.salary < salary_range_from or vacancy.salary > salary_range_to for vacancy in vacancies_list):
             raise InputException("Вакансий с такой зарплатой не найдено. Попробуйте поискать что-нибудь другое.")
+
         elif any(salary_range_to >= vacancy.salary >= salary_range_from for vacancy in vacancies_list):
             vacancies_filtered_by_salary = list(
                 filter(lambda x: salary_range_to >= x.salary >= salary_range_from, vacancies_list)
