@@ -42,7 +42,7 @@ class Vacancy:
          в список экземпляров класса Vacancy"""
         vacancy_obj_list = []
         for vacancy in vacancies:
-            id, name,salary, url, requirement = (
+            id, name, salary, url, requirement = (
                 vacancy["id"],
                 vacancy["name"],
                 vacancy["salary"],

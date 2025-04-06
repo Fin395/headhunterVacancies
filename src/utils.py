@@ -16,7 +16,6 @@ def filter_by_words(vacancies: list[Vacancy], keywords: list[str]) -> list:
             return vacancies_filtered_by_words
 
 
-
 def filter_by_salary(vacancies_list: list[Vacancy], salary_range: str) -> list | None:
     """Вспомогательная функция, которая фильтрует список вакансий по диапазону зарплаты, полученного от пользователя"""
     if len(salary_range) == 0:
@@ -39,7 +38,7 @@ def filter_by_salary(vacancies_list: list[Vacancy], salary_range: str) -> list |
             if any(salary_range_to <= vacancy.salary for vacancy in vacancies_list):
                 vacancies_filtered_by_salary = list(
                     filter(lambda x: salary_range_to <= x.salary >= salary_range_from, vacancies_list)
-            )
+                )
                 return vacancies_filtered_by_salary
             else:
                 raise InputException("Вакансий с такой зарплатой не найдено. Попробуйте поискать что-нибудь другое.")

@@ -1,11 +1,11 @@
 from typing import Any
-from unittest.mock import patch, Mock
+from unittest.mock import patch
+
 import pytest
 import requests
 
 from src.exception import InputException
 from src.head_hunter_api import HeadHunter
-from src.vacancy import Vacancy
 
 
 def test_hh_obj_init(hh_obj: HeadHunter) -> None:
@@ -14,6 +14,7 @@ def test_hh_obj_init(hh_obj: HeadHunter) -> None:
     assert hh_obj.headers == {"User-Agent": "HH-User-Agent"}
     assert hh_obj.params == {"text": "", "page": 0, "per_page": 100, "area": 113}
     assert hh_obj.vacancies == []
+
 
 @patch("requests.get")
 def test_status_code_raise_exception(mock_get: Any, hh_obj: HeadHunter) -> None:

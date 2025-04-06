@@ -1,7 +1,7 @@
 import pytest
 
 from src.exception import InputException
-from src.utils import filter_by_words, sort_vacancies, get_top_vacancies, filter_by_salary
+from src.utils import filter_by_salary, filter_by_words, get_top_vacancies, sort_vacancies
 from src.vacancy import Vacancy
 
 
@@ -22,7 +22,7 @@ def test_filter_by_salary_correct_input(vacancies_obj_list: list[Vacancy]) -> No
 
 def test_filter_by_salary_empty_input(vacancies_obj_list: list[Vacancy]) -> None:
     """Проверяем выбрасывание исключения, если диапазон зарплат не введен пользователем"""
-    with pytest.raises (InputException, match="Введите значения: 'от' и 'до'"):
+    with pytest.raises(InputException, match="Введите значения: 'от' и 'до'"):
         filter_by_salary(vacancies_obj_list, "")
 
 
@@ -36,14 +36,16 @@ def test_filter_by_salary_one_value(vacancies_obj_list: list[Vacancy]) -> None:
 
 def test_filter_by_salary_one_value_no_matches(vacancies_obj_list: list[Vacancy]) -> None:
     """Проверяем выбрасывание исключения, если пользователь ввел одно значение и совпадений нет"""
-    with pytest.raises(InputException, match="Вакансий с такой зарплатой не найдено. Попробуйте поискать что-нибудь другое."):
+    with pytest.raises(
+        InputException, match="Вакансий с такой зарплатой не найдено. Попробуйте поискать что-нибудь другое."
+    ):
         filter_by_salary(vacancies_obj_list, "50000")
 
 
 def test_filter_by_salary_if_from_higher_than_to(vacancies_obj_list: list[Vacancy]) -> None:
-     """Проверяем выбрасывание исключения, если значение 'от' больше, чем 'до'"""
-     with pytest.raises(InputException, match="Значение 'от' не может быть больше значения 'до'"):
-         filter_by_salary(vacancies_obj_list, "1000000-500000")
+    """Проверяем выбрасывание исключения, если значение 'от' больше, чем 'до'"""
+    with pytest.raises(InputException, match="Значение 'от' не может быть больше значения 'до'"):
+        filter_by_salary(vacancies_obj_list, "1000000-500000")
 
 
 def test_filter_by_salary_incorrect_input(vacancies_obj_list: list[Vacancy]) -> None:
@@ -54,7 +56,9 @@ def test_filter_by_salary_incorrect_input(vacancies_obj_list: list[Vacancy]) -> 
 
 def test_filter_by_salary_no_matches(vacancies_obj_list: list[Vacancy]) -> None:
     """Проверяем корректность фильтрации, если пользователь ввел одно значение"""
-    with pytest.raises(InputException, match="Вакансий с такой зарплатой не найдено. Попробуйте поискать что-нибудь другое."):
+    with pytest.raises(
+        InputException, match="Вакансий с такой зарплатой не найдено. Попробуйте поискать что-нибудь другое."
+    ):
         filter_by_salary(vacancies_obj_list, "1000000-20000000")
 
 
