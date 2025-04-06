@@ -1,5 +1,4 @@
 import pytest
-
 from src.file import FileManager
 from src.head_hunter_api import HeadHunter
 from src.vacancy import Vacancy
