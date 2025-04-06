@@ -1,8 +1,6 @@
 import json
 import pytest
 from unittest.mock import mock_open, patch, Mock
-
-from config import DEFAULT_JSON
 from src.file import FileManager
 from src.vacancy import Vacancy
 
